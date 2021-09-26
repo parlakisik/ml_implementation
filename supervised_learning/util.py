@@ -1,8 +1,6 @@
 import time
-
-import pandas as pd               # package for data analysis and manipulation
-import numpy as np                # package for scientific computing on multidimensional arrays
-import matplotlib                 # package for creating visualizations
+import pandas as pd
+import numpy as np
 from matplotlib import pyplot as plt
 from sklearn.model_selection import train_test_split, cross_validate, validation_curve
 from sklearn.model_selection import StratifiedKFold
@@ -18,7 +16,6 @@ def draw(test_x, train_rate, val_rate, xlabel, ylabel, title,filename):
     plt.legend()
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
-    #plt.grid(color='gray', linestyle='-', linewidth=0.5, alpha=0.3)
     plt.savefig(filename + ".png")
     plt.show()
 
