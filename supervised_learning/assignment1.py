@@ -606,8 +606,7 @@ def divorce_nn_initial(data, features, target):
 
 
 def divorce_nn_hyper_hiddenlayer(X_all, Y_all):
-    # param_range = np.linspace(1, 100, 100).astype(int)
-    param_range = np.linspace(50, 500, 10).astype(int)
+    param_range = np.linspace(1, 100, 100).astype(int)
     param_tuple = [tuple([i]) for i in param_range]
     model = MLPClassifier(random_state=234, max_iter=5000)
     train_score, test_score = util.get_hyperdata_validation(model, X_all, Y_all, "hidden_layer_sizes",
@@ -790,7 +789,7 @@ def divorce():
     initial_data = util.get_data(file_name, features, target)
     realworld_data, data = util.get_realworld_data(initial_data, features, target)
     X_train, X_test, y_train, y_test = util.split_data(data, features, target)
-    '''
+    
     # DT
     # Run without pruning
     print ("Decision Tree")
@@ -854,14 +853,17 @@ def divorce():
     print("nn initial")
     divorce_nn_initial(data, features, target)
     print("nn hiddenlayer")
+
     divorce_nn_hyper_hiddenlayer(data[features], data[target])
+
     print("nn maxiter")
     divorce_nn_hyper_max_iter(data[features], data[target])
     print("nn learning rate")
     divorce_nn_hyper_learning_rate(data, features, target)
     print("nn activation")
     divorce_nn_hyper_activation(data, features, target)
-    '''
+   
+
     if do_grid:
         model = divorce_nn_grid(data[features], data[target])
         divorce_nn_last(data, features, target, model)
